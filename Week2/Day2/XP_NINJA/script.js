@@ -47,6 +47,13 @@ if (
 // i = 3
 // o = 4
 // u = 5
-const askuserforaword = prompt("just give me a rondom word")
-  .toLowerCase()
-  .replace("a", 1, "e", 2, "i", 3, "o", 4, "u", 5);
+const askuserforaword = prompt("just give me a rondom word");
+console.log(
+  askuserforaword
+    .toLowerCase()
+    .replace("a", "1")
+    .replace("e", "2")
+    .replace("i", "3")
+    .replace("o", "4")
+    .replace("u", "5")
+);
