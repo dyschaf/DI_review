@@ -46,4 +46,8 @@ let sum = "";
 for (i in grades) {
   sum += grades;
 }
-console.log(sum / grades.length);
+if (sum / grades.length > 65) {
+  console.log("passed");
+} else {
+  console.log("failed");
+}
