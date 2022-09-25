@@ -97,7 +97,7 @@ let prices = {
 let shoppingList= ["banana","orange","apple"]
 const myBill=()=>{
     for(i in shoppingList){
-        if (shoppingList in stock>0){
+        if (shoppingList in stock&&shoppingList){
             shoppingList in
         }
     }
