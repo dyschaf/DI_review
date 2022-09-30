@@ -14,7 +14,9 @@ const infoAboutMe = () => {
   console.log("David", 25, "blue");
 };
 infoAboutMe();
-const infoAboutPerson = () => (personName, personAge, personFavoriteColor);
+const infoAboutPerson = (personName, personAge, personFavoriteColor) => {
+  console.log(personName, personAge, personFavoriteColor);
+};
 infoAboutPerson("David", 45, "blue");
 infoAboutPerson("Josh", 12, "yellow");
 // 🌟 Exercise 2 : Tips
@@ -29,7 +31,7 @@ infoAboutPerson("Josh", 12, "yellow");
 // Console.log the tip amount and the final bill (bill + tip).
 // Call the calculateTip() function.
 const calculateTip = () => {
-  const bill = intParse(prompt("the bill"));
+  const bill = parseInt(prompt("the bill"));
   if (bill < 50) {
     console.log(bill * 0.2 + bill);
   } else if (bill < 200) {
@@ -62,11 +64,13 @@ const isDivisible = () => {
 };
 isDivisible();
 const isDivisibleParm = (parm) => {
+  let numbers = [];
   for (let i = 0; i < 500; i++) {
     if (parm % i) {
-      console.log(i);
+      numbers.push(i);
     }
   }
+  console.log(numbers);
 };
 isDivisibleParm(5);
 isDivisibleParm(9);
@@ -96,12 +100,86 @@ let prices = {
 // Bonus: If the item is in stock, decrease the item’s stock by 1
 let shoppingList = ["banana", "orange", "apple"];
 const myBill = () => {
+  let checkOut = 0;
   for (i of shoppingList) {
     if (stock[i] > 0) {
-      checkOut += prices[item];
+      checkOut += prices[i];
       stock[i] -= 1;
     }
   }
   return checkOut;
 };
 console.log(myBill());
+// Exercise 5 : What’s In My Wallet ?
+// Instructions
+// Note: Read the illustration (point 4), while reading the instructions
+// Create a function named changeEnough(itemPrice, amountOfChange) that receives two arguments :
+// an item price
+// and an array representing the amount of change in your pocket.
+// In the function, determine whether or not you can afford the item.
+// If the sum of the change is bigger or equal than the item’s price (ie. it means that you can afford the item), the function should return true
+// If the sum of the change is smaller than the item’s price (ie. it means that you cannot afford the item) the function should return false
+// Change will always be represented in the following order: quarters, dimes, nickels, pennies.
+// A quarters is 0.25
+// A dimes is 0.10
+// A nickel is 0.05
+// A penny is 0.01
+// 4. To illustrate:
+// After you created the function, invoke it like this:
+// changeEnough(4.25, [25, 20, 5, 0])
+// The value 4.25 represents the item’s price
+// The array [25, 20, 5, 0] represents 25 quarters, 20 dimes, 5 nickels and 0 pennies.
+// The function should return true, since having 25 quarters, 20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50 which is bigger than 4.25 (the total amount due)
+// Examples
+// changeEnough(14.11, [2,100,0,0]) => returns false
+// changeEnough(0.75, [0,0,20,5]) => returns true
+
+const changeEnough = (itemPrice, amountOfChange) => {
+  let amount1 = amountOfChange[0] * 0.25;
+  let amount2 = amountOfChange[1] * 0.1;
+  let amount3 = amountOfChange[2] * 0.05;
+  let amount4 = amountOfChange[3] * 0.01;
+  if (amount1 + amount2 + amount3 + amount4 >= itemPrice) {
+    console.log(true);
+  } else {
+    console.log(false);
+  }
+};
+changeEnough(14.11, [2, 100, 0, 0]);
+changeEnough(0.75, [0, 0, 20, 5]);
+// 🌟 Exercise 6 : Vacations Costs
+// Instructions
+// Let’s create functions that calculate your vacation’s costs:
+// Define a function called hotelCost().
+// It should ask the user for the number of nights they would like to stay in the hotel.
+// If the user doesn’t answer or if the answer is not a number, ask again.
+// The hotel costs $140 per night. The function should return the total price of the hotel.
+// Define a function called planeRideCost().
+// It should ask the user for their destination.
+// If the user doesn’t answer or if the answer is not a string, ask again.
+// The function should return a different price depending on the location.
+// “London”: 183$
+// “Paris” : 220$
+// All other destination : 300$
+// Define a function called rentalCarCost().
+// It should ask the user for the number of days they would like to rent the car.
+// If the user doesn’t answer or if the answer is not a number, ask again.
+// Calculate the cost to rent the car. The car costs $40 everyday.
+// If the user rents a car for more than 10 days, they get a 5% discount.
+// The function should return the total price of the car rental.
+// Define a function called totalVacationCost() that returns the total cost of the user’s vacation by calling the 3 functions that you created above.
+// Example : The car cost: $x, the hotel cost: $y, the plane tickets cost: $z.
+// Hint: You have to call the functions hotelCost(), planeRideCost() and rentalCarCost() inside the function totalVacationCost().
+// Call the function totalVacationCost()
+// Bonus: Instead of using a prompt inside the 3 first functions, only use a prompt inside the totalVacationCost() function. You need to change the 3 first functions, accordingly.
+const hotelCost = () => {
+  while (true) {
+    numOfDays = prompt("how many days?");
+    if (!isNaN(numOfDays)) {
+      break;
+    }
+  }
+  console.log(numOfDays * 140);
+  return numOfDays * 140;
+};
+hotelCost();
